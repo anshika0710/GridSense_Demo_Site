@@ -27,11 +27,11 @@ GridSense reframes automated violation detection as a **calibration and reasonin
 
 A **multi-frame, tamper-evident evidence chain** (rather than a single static photo) further strengthens legal defensibility.
 
-Full methodology, assumptions, and evaluation strategy are in the [concept note](./GridSense_Concept_Note.pdf).
+Full methodology, assumptions, and evaluation strategy are in the GridSense_Concept_Note.pdf.
 
 ## Live concept demo
 
-🔗 **[View the concept demo](https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/)** *(replace with your GitHub Pages URL after enabling Pages in repo Settings)*
+https://grid-sense-demo-site.vercel.app/
 
 The demo site walks through the problem, the three pillars, the system architecture, and an illustrative evidence-review dashboard mockup.
 
