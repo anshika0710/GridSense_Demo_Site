@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GridSense — Concept Demo | Gridlock Hackathon 2.0</title>
+<style>
+  :root{
+    --navy:#1B2A4A;
+    --navy-soft:#27395E;
+    --teal:#0E7C7B;
+    --amber:#F2A93B;
+    --bg:#F7F8FA;
+    --muted:#5A6B7E;
+    --line:#DCE3E9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:#1A1A1A;
+    line-height:1.55;
+  }
+  h1,h2,h3{font-family:Georgia,Cambria,"Times New Roman",serif;color:var(--navy);margin:0;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+
+  header.hero{
+    background:linear-gradient(160deg,var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff;
+    padding:90px 0 70px;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:1.5px;
+    font-weight:700;
+    color:var(--amber);
+    background:rgba(242,169,59,0.12);
+    border:1px solid rgba(242,169,59,0.4);
+    padding:6px 14px;
+    border-radius:20px;
+    margin-bottom:22px;
+  }
+  header.hero h1{color:#fff;font-size:52px;letter-spacing:-0.5px;}
+  header.hero p.tagline{
+    font-size:21px;
+    color:#C9D3DC;
+    max-width:680px;
+    margin-top:16px;
+    font-style:italic;
+  }
+  .stat-row{display:flex;gap:40px;margin-top:46px;flex-wrap:wrap;}
+  .stat{border-left:3px solid var(--amber);padding-left:16px;}
+  .stat .num{font-size:15px;color:var(--amber);font-weight:700;font-family:Georgia,serif;}
+  .stat .label{font-size:14px;color:#C9D3DC;max-width:200px;margin-top:4px;}
+
+  section{padding:64px 0;}
+  section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  h2.section-title{font-size:30px;margin-bottom:8px;}
+  p.section-sub{color:var(--muted);font-size:17px;margin-top:0;margin-bottom:36px;max-width:720px;}
+
+  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .problem-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;}
+  .problem-card .tag{color:var(--teal);font-weight:700;font-size:14px;letter-spacing:0.5px;}
+  .problem-card p{color:var(--muted);font-size:15px;margin:10px 0 0;}
+
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
+  .pillar{border-radius:12px;padding:26px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);}
+  .pillar:nth-child(2){border-top-color:var(--amber);}
+  .pillar:nth-child(3){border-top-color:var(--navy);}
+  .pillar h3{font-size:18px;margin-bottom:10px;}
+  .pillar p{font-size:14.5px;color:var(--muted);margin:0;}
+
+  figure{margin:36px 0 0;}
+  figure img{width:100%;border-radius:14px;border:1px solid var(--line);display:block;}
+  figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;font-style:italic;}
+
+  .violations{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;}
+  .vchip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;font-size:14.5px;font-weight:600;color:var(--navy);text-align:center;}
+
+  footer{padding:40px 0 70px;text-align:center;}
+  footer p{color:var(--muted);font-size:13.5px;max-width:600px;margin:0 auto;}
+  footer .brand{color:var(--navy);font-weight:700;margin-bottom:10px;font-family:Georgia,serif;font-size:18px;}
+
+  @media (max-width:800px){
+    header.hero h1{font-size:36px;}
+    .problem-grid,.pillars{grid-template-columns:1fr;}
+    .violations{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">CONCEPT DEMO &middot; PROBLEM STATEMENT 3</span>
+    <h1>GridSense</h1>
+    <p class="tagline">A self-calibrating, map-aware computer vision system for automated traffic violation detection and evidence generation.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">Zero manual setup</div><div class="label">per-camera calibration removed via map data</div></div>
+      <div class="stat"><div class="num">7 violation types</div><div class="label">helmet, seatbelt, triple-riding, wrong-side &amp; more</div></div>
+      <div class="stat"><div class="num">Adaptive by design</div><div class="label">site-specific Junction Memory feedback loop</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">The problem with today's systems</h2>
+    <p class="section-sub">Three structural gaps limit deployed traffic-camera enforcement systems, beyond the core detection task itself.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="tag">DOESN'T SCALE</div>
+        <p>Every camera needs manual, on-site calibration of stop-lines and lane zones in pixel coordinates before it can be useful.</p>
+      </div>
+      <div class="problem-card">
+        <div class="tag">RIGID LOGIC</div>
+        <p>A separate hardcoded model or rule per violation type makes new violation categories expensive to add.</p>
+      </div>
+      <div class="problem-card">
+        <div class="tag">WEAK EVIDENCE</div>
+        <p>A single still photo is often insufficient or contestable as legal evidence for judgment-based violations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="section-title">Three core innovations</h2>
+    <p class="section-sub">GridSense reframes violation detection as a calibration and reasoning problem, not just a detection problem.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Map-Aware Auto-Calibration</h3>
+        <p>Geo-referenced road network data automatically aligns real-world lane geometry and stop-lines to a new camera's pixel space — no manual zone-drawing.</p>
+      </div>
+      <div class="pillar">
+        <h3>Scene-Graph Violation Reasoning</h3>
+        <p>Vehicles, riders, signal state, and zones become nodes in a graph; violations are inferred from relationship patterns, not hardcoded per-type classifiers.</p>
+      </div>
+      <div class="pillar">
+        <h3>Junction Memory</h3>
+        <p>Human-reviewer feedback locally adapts each camera's thresholds, letting one global model adjust to site-specific quirks without retraining.</p>
+      </div>
+    </div>
+
+    <figure>
+      <img src="assets/architecture.png" alt="GridSense system architecture diagram">
+      <figcaption>End-to-end pipeline — preprocessing through review &amp; analytics, mapped to the problem statement's task list.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Evidence review, illustrated</h2>
+    <p class="section-sub">A mockup of the reviewer-facing dashboard: confidence-gated review, structured metadata, and a tamper-evident evidence record.</p>
+    <figure>
+      <img src="assets/dashboard.png" alt="GridSense evidence review dashboard mockup">
+      <figcaption>UI concept mockup — illustrative, not a live system. No working model is required for Problem Statement 3.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="section-title">Violations covered</h2>
+    <p class="section-sub">Each is inferred from the same scene-graph reasoning layer rather than a dedicated model.</p>
+    <div class="violations">
+      <div class="vchip">Helmet non-compliance</div>
+      <div class="vchip">Seatbelt non-compliance</div>
+      <div class="vchip">Triple riding</div>
+      <div class="vchip">Wrong-side driving</div>
+      <div class="vchip">Stop-line violation</div>
+      <div class="vchip">Red-light violation</div>
+      <div class="vchip">Illegal parking</div>
+      <div class="vchip">License plate OCR</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">GridSense</div>
+    <p>This is an idea/concept demonstration prepared for Problem Statement 3 of Gridlock Hackathon 2.0, which explicitly requires only a proposed approach, methodology, assumptions, and evaluation strategy — no working model or dataset is mandated. Full details are in the accompanying concept note.</p>
+  </div>
+</footer>
+
+</body>
+</html>
